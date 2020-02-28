@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{
+      overflow: hidden;
+      margin: 0px;
+      padding: 0px;
+    }
+  </style>
+</head>
+<body>
+</body>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
+
+<script>
+
+  var sca = -5;
+  var start = -2;
+  var step = 0.009;
+  var num = 0;
+  var colors = ['#1DA0EA', '#1DA0EA', '#1DA0EA ', '#1DA0EA', '#1DA0EA'];
+  var color = null;
+  var color2 = null;
+
+  function setup()
+  {
+    createCanvas(windowWidth, windowHeight);
+    background('black');
+    setFrameRate(1000);
+    color = random(colors);
+    color2 = random(colors);
+  }
+
+  function draw()
+  { 
+    
+    translate(width/2, height/2 - 100);
+    scale(70 + sca);
+
+    noFill();    
+    stroke(color);
+    strokeWeight(0.01);
+
+    if( start < 2)
+    {
+      var y = sqrt( 1 - pow( abs(start) - 1, 2) );
+      
+      ellipse(start, -y, 1);
+      
+      stroke(color2);
+      var y2 = acos(1-abs(start))-PI
+      ellipse(start, -y2, 1);
+      
+      start += step;
+    }else{
+      if(num < 3)
+      {
+        start = -2;
+        sca += sca;
+        num += 1;s
+        color = random(colors);
+        color2 = random(colors);
+      }
+    }
+  }
+
+</script>
